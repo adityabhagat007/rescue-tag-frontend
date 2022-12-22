@@ -10,8 +10,8 @@ const allRoutes = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage/>} />
-          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<SignUpPage />} />
           <Route path="/*" element={<Page404 />} />
         </Routes>
