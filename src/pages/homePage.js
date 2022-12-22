@@ -1,15 +1,15 @@
 import React from "react"
 import Layout from "../layout/layout";
 
-const Home = ()=>{
+const homePage = ()=>{
   return (
     <>
     <Layout>
-     <h1>HOME</h1>
-     </Layout>
+        <h1>HOME</h1>
+    </Layout>
     </>
   )
 }
 
 
-export default Home;
+export default homePage;
