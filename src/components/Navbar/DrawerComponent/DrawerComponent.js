@@ -15,7 +15,7 @@ const DrawerComponent = () => {
       <Drawer
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
-        PaperProps={{ sx: { width: "40%" } }}
+        PaperProps={{ sx: { width: "30%" } }}
       >
         <List>
           <ListItemButton>
@@ -27,10 +27,10 @@ const DrawerComponent = () => {
       </Drawer>
       <IconButton
         onClick={() => setOpenDrawer(!openDrawer)}
-        style={{ color: red[900] }}
+        style={{ color: red[900] ,marginRight:"50px" }}
       >
         <MenuIcon />
-      </IconButton>
+      </IconButton >
     </>
   );
 };
