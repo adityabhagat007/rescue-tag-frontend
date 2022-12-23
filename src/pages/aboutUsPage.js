@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import Layout from "../layout/layout";
 
-const aboutUsPage = ()=>{
+const AboutUsPage = ()=>{
+  const [value,setValue] = useState(false);
   return (
     <>
     <Layout>
@@ -12,4 +13,4 @@ const aboutUsPage = ()=>{
 }
 
 
-export default aboutUsPage;
+export default AboutUsPage;

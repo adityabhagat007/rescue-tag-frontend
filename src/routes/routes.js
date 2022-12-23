@@ -4,7 +4,8 @@ import Page404 from "../pages/page404";
 import AboutPage from "../pages/aboutUsPage";
 import LoginPage from "../pages/loginPage";
 import SignUpPage from "../pages/signUpPage";
-const allRoutes = () => {
+
+const AllRoutes = () => {
   return (
     <>
       <BrowserRouter>
@@ -20,4 +21,4 @@ const allRoutes = () => {
   );
 };
 
-export default allRoutes;
+export default AllRoutes;

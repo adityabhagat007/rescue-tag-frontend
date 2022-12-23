@@ -1,6 +1,6 @@
 
 
-const page404 = () =>{
+const Page404 = () =>{
 return(
   <>
     <h1><center> Page not found </center></h1>
@@ -8,4 +8,4 @@ return(
 )
 }
 
-export default page404;
+export default Page404;

@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../layout/layout";
 
-const signUpPage = ()=>{
+const SignUpPage = ()=>{
   return (
     <>
     <Layout>
@@ -12,4 +12,4 @@ const signUpPage = ()=>{
 }
 
 
-export default signUpPage;
+export default SignUpPage;
