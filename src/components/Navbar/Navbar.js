@@ -1,56 +1,114 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 // import style from './Navbar.module.css';
-// import DrawerComponent from './DrawerComponent/DrawerComponent';
-import AppBar from '@mui/material/AppBar';
+import DrawerComponent from "./DrawerComponent/DrawerComponent";
+import AppBar from "@mui/material/AppBar";
 // import Typography from '@mui/material/Typography';
-import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Button from '@mui/material/Button';
+import Toolbar from "@mui/material/Toolbar";
+import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Button from "@mui/material/Button";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
 // import useMediaQuery from '@mui/material/useMediaQuery';
 
-
 function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+
+const Navbar = () => {
+  const [value, setValue] = useState();
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const navigate = useNavigate();
+  const navigationPage = (pageName) => {
+    navigate(pageName);
+  };
+  function a11yProps(index) {
     return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
+      id: `simple-tab-${index}`,
+      "aria-controls": `simple-tabpanel-${index}`,
     };
-}
+  }
+  const theme = useTheme();
+  const screenSize = useMediaQuery(theme.breakpoints.up("sm"));
 
-function Navbar() {
-    const [value, setValue] = useState(0);
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-    return (
-        <React.Fragment>
-            <AppBar position="static" sx={{ background: '#000000' }}>
-                <Toolbar>
-                    <Box
-                        component="img"
-                        sx={{ height: 40 }}
-                        alt="rescuetag"
-                        src="https://i.ibb.co/nz6ccqC/rescuetag-low-resolution-logo-color-on-transparent-background.png"
-                    />
-                    <Tabs textColor="#ffffff"
-                        value={value}
-                        onChange={handleChange}
-                        TabIndicatorProps={{ style: { background: '#ff0000' } }}
-                    >
-                        <Tab label="Home" {...a11yProps(0)} sx={{ marginLeft: '20px' }}></Tab>
-                        <Tab label="QR Code" {...a11yProps(1)} sx={{ marginLeft: '10px' }}></Tab>
-                        <Tab label="About Us" {...a11yProps(2)} sx={{ marginLeft: '10px' }}></Tab>
-                        <Tab label="FAQ" {...a11yProps(3)} sx={{ marginLeft: '10px' }}></Tab>
-                        <Tab label="Contact Us" {...a11yProps(4)}></Tab>
-                    </Tabs>
-                    <Button variant="contained" color="error" sx={{ marginLeft: 'auto' }}>Login</Button>
-                    <Button variant="contained" color="error" sx={{ marginLeft: '10px' }}>Register</Button>
-                </Toolbar>
-                {/* <DrawerComponent /> */}
-            </AppBar>
-        </React.Fragment>
-    )
-}
+  return (
+    <React.Fragment>
+      <AppBar
+        position="static"
+        sx={{ background: "#000000", maxWidth: "100%", overflowX: "hidden" }}
+      >
+        <Toolbar>
+          {!screenSize ? (
+            <>
+              <DrawerComponent />
+              <Box
+                component="img"
+                sx={{ height: 40 }}
+                alt="rescuetag"
+                src="https://i.ibb.co/nz6ccqC/rescuetag-low-resolution-logo-color-on-transparent-background.png"
+              />
+            </>
+          ) : (
+            <>
+              <Box
+                component="img"
+                sx={{ height: 40 }}
+                alt="rescuetag"
+                src="https://i.ibb.co/nz6ccqC/rescuetag-low-resolution-logo-color-on-transparent-background.png"
+              />
+              <Tabs
+                textColor="#ffffff"
+                value={value}
+                onChange={() => setValue(value)}
+                TabIndicatorProps={{ style: { background: "#ff0000" } }}
+              >
+                <Tab
+                  label="Home"
+                  {...a11yProps(0)}
+                  sx={{ textDecoration: "none", margin: "0 0 0 15px" }}
+                  onClick={() => navigationPage("/")}
+                ></Tab>
+                <Tab
+                  label="AboutUs"
+                  {...a11yProps(1)}
+                  sx={{ textDecoration: "none", margin: "0 10px" }}
+                  onClick={() => navigationPage("/about")}
+                ></Tab>
+              </Tabs>
 
-export default Navbar
+              <Button
+                variant="contained"
+                color="error"
+                sx={{ textDecoration: "none", marginLeft: "auto" }}
+                onClick={() => navigationPage("/login")}
+              >
+                Login
+              </Button>
+              <Button
+                variant="contained"
+                color="error"
+                sx={{
+                  textDecoration: "none",
+                  margin: "0 5px",
+                }}
+                onClick={() => navigationPage("/register")}
+              >
+                Register
+              </Button>
+            </>
+          )}
+        </Toolbar>
+      </AppBar>
+    </React.Fragment>
+  );
+};
+
+export default Navbar;
