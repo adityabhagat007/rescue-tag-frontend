@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 // import style from './Navbar.module.css';
-import DrawerComponent from "./DrawerComponent/DrawerComponent";
+import DrawerComponent from "./components/DrawerComponent/DrawerComponent";
 import AppBar from "@mui/material/AppBar";
 // import Typography from '@mui/material/Typography';
 import Toolbar from "@mui/material/Toolbar";
@@ -12,6 +12,7 @@ import Tab from "@mui/material/Tab";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
+import Logo from "./components/logoComponent";
 // import useMediaQuery from '@mui/material/useMediaQuery';
 
 function a11yProps(index) {
@@ -49,21 +50,11 @@ const Navbar = () => {
           {!screenSize ? (
             <>
               <DrawerComponent />
-              <Box
-                component="img"
-                sx={{ height: 40 }}
-                alt="rescuetag"
-                src="https://i.ibb.co/nz6ccqC/rescuetag-low-resolution-logo-color-on-transparent-background.png"
-              />
+              <Logo/>
             </>
           ) : (
             <>
-              <Box
-                component="img"
-                sx={{ height: 40 }}
-                alt="rescuetag"
-                src="https://i.ibb.co/nz6ccqC/rescuetag-low-resolution-logo-color-on-transparent-background.png"
-              />
+            <Logo/>
               <Tabs
                 textColor="#ffffff"
                 value={value}
