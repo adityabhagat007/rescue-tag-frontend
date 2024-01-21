@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { publicRoutes } from "./routes/routes";
-// import Allroutes from "./routes/routes";
+
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
           ))}
         </Route>
       ))}
+      <Route path="*" element={<><h1>404 page not found</h1></>}/>
     </Routes>
   );
 }

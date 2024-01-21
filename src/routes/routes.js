@@ -1,3 +1,4 @@
+import AppLayout from "../layout/appLayout";
 import HomeLayout from "../layout/homeLayout";
 import AboutUsPage from "../pages/aboutUsPage";
 import HomePage from "../pages/homePage";
@@ -31,5 +32,21 @@ export const publicRoutes = [
   }
 ]
 
+
+
 export const privateRoute = [
+  {
+    path:"",
+    element:<AppLayout/>,
+    children:[
+      {
+        path:"/dashboard",
+        element:<HomePage/>
+      },
+      {
+        path:"/about",
+        element:<AboutUsPage/>
+      },
+    ]
+  }
 ]
