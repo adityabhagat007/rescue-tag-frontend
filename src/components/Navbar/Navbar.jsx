@@ -90,7 +90,7 @@ const Navbar = () => {
                   textDecoration: "none",
                   margin: "0 5px",
                 }}
-                onClick={() => navigationPage("/register")}
+                onClick={() => navigationPage("/signup")}
               >
                 Register
               </Button>
