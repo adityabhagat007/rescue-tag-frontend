@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 export default function HomeLayout(props){
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
         <Outlet/>
       <Footer />
     </>

@@ -8,14 +8,15 @@ function App() {
     <Routes>
       {publicRoutes.map((route) => (
         <Route
+          key={route.path}
           element={route.element}
         >
-          {route.children.map((childrenRoute)=>(
-            <Route path={childrenRoute.path} key={childrenRoute.path} element={childrenRoute.element}/>
+          {route.children.map((childrenRoute) => (
+            <Route path={childrenRoute.path} key={childrenRoute.path} element={childrenRoute.element} />
           ))}
         </Route>
       ))}
-      <Route path="*" element={<><h1>404 page not found</h1></>}/>
+      <Route path="*" element={<><h1>404 page not found</h1></>} />
     </Routes>
   );
 }
