@@ -43,10 +43,6 @@ export const privateRoute = [
         path:"/dashboard",
         element:<HomePage/>
       },
-      {
-        path:"/about",
-        element:<AboutUsPage/>
-      },
     ]
   }
 ]
