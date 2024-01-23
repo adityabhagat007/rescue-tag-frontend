@@ -1,16 +1,16 @@
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function Copyright(props) {
+export default function Copyright({ color, margin }) {
   return (
     <Typography
       variant="body2"
-      color="text.secondary"
+      color={color}
       align="center"
-      {...props}
+      sx={{ mt: margin }}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link style={{color:color}} href="https://mui.com/">
         rescuetag
       </Link>{" "}
       {new Date().getFullYear()}

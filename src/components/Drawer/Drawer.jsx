@@ -93,7 +93,7 @@ export default function DrawerComponent() {
     setOpen(true);
   };
   return (<>
-    <AppBar position="fixed" open={open} style={{background:"#ffff"}}>
+    <AppBar position="fixed" open={open} style={{background:"#ffff"}} elevation={0}>
     <Toolbar>
       <IconButton
         color="inherit"
@@ -107,67 +107,19 @@ export default function DrawerComponent() {
       >
         <MenuIcon/>
       </IconButton>
-      <Typography variant="h6" noWrap component="div">
-        Mini variant drawer
+      <Typography variant="h6" noWrap component="div" color="#000">
+        User Name
       </Typography>
     </Toolbar>
   </AppBar>
     <Drawer variant="permanent" open={open}>
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
-          {open ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          {open ? <ChevronLeftIcon /> :<ChevronRightIcon /> }
         </IconButton>
       </DrawerHeader>
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </Drawer>
     </>
   );
