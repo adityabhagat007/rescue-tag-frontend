@@ -30,7 +30,7 @@ const DrawerComponent = () => {
         style={{ color: red[900] ,marginRight:"50px" }}
       >
         <MenuIcon />
-      </IconButton >
+      </IconButton>
     </>
   );
 };

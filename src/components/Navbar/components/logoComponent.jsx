@@ -1,7 +1,6 @@
-import { Box } from "@mui/material"
+import { Box } from "@mui/material";
 
 const Logo = ()=>{
-
     return (
         <Box
         component="img"
@@ -12,4 +11,4 @@ const Logo = ()=>{
     )
 }
 
-export default Logo
+export default Logo;
