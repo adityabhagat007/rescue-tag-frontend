@@ -37,8 +37,8 @@ export const apiErrorHandler = async (err) =>{
     try{
         const errorMsg = err?.response?.data?.message || "Something went wrong.....";
         const status = err?.response?.status || 500;
-        console.error("API REQUEST FAIL..........",errorMsg,status);
-        return {data:null ,error:errorMsg ,status};
+        console.error("API REQUEST FAIL..........",err,errorMsg,status);
+        return {data:null ,error:errorMsg ,status:status};
     }catch(err){
         console.error(err);
     }

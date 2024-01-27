@@ -7,7 +7,7 @@ export default function HomeLayout(props){
     <>
       <Navbar />
         <Outlet/>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
