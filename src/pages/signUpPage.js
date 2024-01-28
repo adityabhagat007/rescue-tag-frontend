@@ -14,16 +14,23 @@ import { useFormik } from "formik";
 import { NavLink } from "react-router-dom";
 import Copyright from "../components/Copyright";
 import TEXT_CONSTANTS from "../constants/textConstants";
+import { SnackbarContent } from "@mui/material";
+import SnackBarComponent from "../components/AlertComponents/SnackBarComponent";
+import { useDispatch } from "react-redux";
+import { setMessage } from "../redux/reducers/msgSlice";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignUpPage() {
-  const [signupSuccess, setSignupSuccess] = useState({
-    success: false,
-    message: "",
-  });
-  const [signupError, setSignupError] = useState({ error: false, message: "" });
-
+console.log("Singup...................");
+ const dispatch = useDispatch();
+  const handleSignup = async (data)=>{
+    const res= await userSignUp(data);
+    console.log(res);
+    if(res.status ==  500){
+      dispatch(setMessage({type:"error",msg:"Internal server error",statusCode:500}))
+    }
+  }
   const formik = useFormik({
     validationSchema: userSchema,
     initialValues: {
@@ -34,7 +41,7 @@ export default function SignUpPage() {
       confirmPassword: "",
     },
     onSubmit: (values, actions) =>
-      userSignUp(values),
+     handleSignup(values)
   });
 
   return (
@@ -67,7 +74,7 @@ export default function SignUpPage() {
                 id="name"
                 label="Name"
                 autoFocus
-                {...formik.getFieldProps("userName")}
+                {...formik.getFieldProps("name")}
                 error={formik.touched.name && Boolean(formik.errors.name)}
                 helperText={formik.touched.name && formik.errors.name}
               />
@@ -81,7 +88,7 @@ export default function SignUpPage() {
                 label="User Name"
                 name="userName"
                 autoComplete="HelloWorld1234"
-                {...formik.getFieldProps("name")}
+                {...formik.getFieldProps("userName")}
                 error={
                   formik.touched.userName && Boolean(formik.errors.userName)
                 }
