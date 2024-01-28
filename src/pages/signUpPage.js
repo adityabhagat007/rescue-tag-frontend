@@ -16,19 +16,19 @@ import Copyright from "../components/Copyright";
 import TEXT_CONSTANTS from "../constants/textConstants";
 import { SnackbarContent } from "@mui/material";
 import SnackBarComponent from "../components/AlertComponents/SnackBarComponent";
+import { useDispatch } from "react-redux";
+import { setMessage } from "../redux/reducers/msgSlice";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignUpPage() {
 console.log("Singup...................");
- const [open ,setOpen] = useState(false);
- const [data,setData] =useState(false);
+ const dispatch = useDispatch();
   const handleSignup = async (data)=>{
     const res= await userSignUp(data);
     console.log(res);
-    if(res.status ==500){
-      setOpen(true);
-      
+    if(res.status ==  500){
+      dispatch(setMessage({type:"error",msg:"Internal server error",statusCode:500}))
     }
   }
   const formik = useFormik({
@@ -46,7 +46,6 @@ console.log("Singup...................");
 
   return (
     <Container component="main" maxWidth="xs">
-      <SnackBarComponent type={"error"} open={open} message={"Internal Server error"} setHandleOpen={setOpen}/>
       <Box
         sx={{
           marginTop: 5,

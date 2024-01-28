@@ -6,13 +6,7 @@ import Copyright from "../Copyright";
 
 export default function StickyFooter() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
-    >
+    <Box>
       <Box
         component="footer"
         sx={{
@@ -24,7 +18,6 @@ export default function StickyFooter() {
         }}
       >
         <Container maxWidth="sm">
-          <Typography variant="body1">Sticky footer</Typography>
           <Copyright color={"#fff"}/>
         </Container>
       </Box>
