@@ -14,23 +14,27 @@ import { useFormik } from "formik";
 import { NavLink } from "react-router-dom";
 import Copyright from "../components/Copyright";
 import TEXT_CONSTANTS from "../constants/textConstants";
-import { SnackbarContent } from "@mui/material";
-import SnackBarComponent from "../components/AlertComponents/SnackBarComponent";
 import { useDispatch } from "react-redux";
 import { setMessage } from "../redux/reducers/msgSlice";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignUpPage() {
-console.log("Singup...................");
- const dispatch = useDispatch();
-  const handleSignup = async (data)=>{
-    const res= await userSignUp(data);
-    console.log(res);
-    if(res.status ==  500){
-      dispatch(setMessage({type:"error",msg:"Internal server error",statusCode:500}))
+  console.log("Singup page...................");
+  const dispatch = useDispatch();
+  const handleSignup = async (data) => {
+    let type;
+    const res = await userSignUp(data);
+    console.log(res)
+    if (res.status == 200) {
+      type = "success";
+    } else {
+      type = "error";
     }
-  }
+    dispatch(
+      setMessage({ type: type, msg: res.data.message, statusCode: res.status })
+    );
+  };
   const formik = useFormik({
     validationSchema: userSchema,
     initialValues: {
@@ -40,8 +44,7 @@ console.log("Singup...................");
       password: "",
       confirmPassword: "",
     },
-    onSubmit: (values, actions) =>
-     handleSignup(values)
+    onSubmit: (values, actions) => handleSignup(values),
   });
 
   return (

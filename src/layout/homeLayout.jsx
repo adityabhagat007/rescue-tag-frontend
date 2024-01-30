@@ -13,7 +13,7 @@ export default function HomeLayout(props){
         <Navbar/>
         </div>
         <div className="home-page-content">
-         <SnackBarComponent/>
+          <SnackBarComponent/>
           <Outlet/>
         </div>
         <div className="footer" style={{paddingTop:"10%"}}>

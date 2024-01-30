@@ -1,11 +1,12 @@
+import React from "react";
 import AppLayout from "../layout/appLayout";
 import HomeLayout from "../layout/homeLayout";
 import AboutUsPage from "../pages/aboutUsPage";
 import HomePage from "../pages/homePage";
-import LoginPage from "../pages/loginPage";
+
 import SignUpPage from "../pages/signUpPage";
 
-
+const LoginPage = React.lazy(()=> import("../pages/loginPage"))
 
 export const publicRoutes = [
   {
