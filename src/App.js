@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { privateRoute, publicRoutes } from "./routes/routes";
+import { Backdrop } from "@mui/material";
 
 function App() {
   return (
+    <Suspense fallback={<></>}>
     <Routes>
       {publicRoutes.map((route) => (
         <Route element={route.element}>
@@ -36,6 +38,7 @@ function App() {
         }
       />
     </Routes>
+    </Suspense>
   );
 }
 

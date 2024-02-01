@@ -14,23 +14,32 @@ import { useFormik } from "formik";
 import { NavLink } from "react-router-dom";
 import Copyright from "../components/Copyright";
 import TEXT_CONSTANTS from "../constants/textConstants";
-import { SnackbarContent } from "@mui/material";
-import SnackBarComponent from "../components/AlertComponents/SnackBarComponent";
 import { useDispatch } from "react-redux";
 import { setMessage } from "../redux/reducers/msgSlice";
+import DialogWrapper from "../components/Modal/DialogWrapper";
+import OtpModalBody from "../components/Modal/OtpModalBody";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignUpPage() {
-console.log("Singup...................");
- const dispatch = useDispatch();
-  const handleSignup = async (data)=>{
-    const res= await userSignUp(data);
-    console.log(res);
-    if(res.status ==  500){
-      dispatch(setMessage({type:"error",msg:"Internal server error",statusCode:500}))
+  console.log("Singup page...................");
+  const dispatch = useDispatch();
+  const [modalOpen ,setModalOpen] = useState(false)
+  const handleSignup = async (data) => {
+    const res = await userSignUp(data);
+    console.log(res)
+    if (res.status == 200) {
+      dispatch(
+        setMessage({ type: "success", msg: res.data.message, statusCode: res.status })
+      );
+      setModalOpen(true);
+    } else {
+      dispatch(
+        setMessage({ type: "error", msg: res.data.message, statusCode: res.status })
+      );
     }
-  }
+   
+  };
   const formik = useFormik({
     validationSchema: userSchema,
     initialValues: {
@@ -40,12 +49,18 @@ console.log("Singup...................");
       password: "",
       confirmPassword: "",
     },
-    onSubmit: (values, actions) =>
-     handleSignup(values)
+    onSubmit: (values, actions) => handleSignup(values),
   });
 
   return (
     <Container component="main" maxWidth="xs">
+      <DialogWrapper
+        title={"OTP Verification"}
+        width={"lg"}
+        open={modalOpen}
+        setOpen={setModalOpen}
+        body={<OtpModalBody/>}
+      />
       <Box
         sx={{
           marginTop: 5,

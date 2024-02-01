@@ -1,4 +1,11 @@
-import { Alert, Button, IconButton, Snackbar } from "@mui/material";
+import {
+  Alert,
+  AlertTitle,
+  Button,
+  IconButton,
+  Snackbar,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,14 +39,15 @@ export default function SnackBarComponent() {
       action={action}
       autoHideDuration={6000}
       onClose={handleClose}
-      anchorOrigin={{ vertical:"top", horizontal:"right" }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
     >
       <Alert
         onClose={handleClose}
         severity={msgState.type}
-        variant="filled"
         sx={{ width: "100%" }}
+        variant="filled"
       >
+        <AlertTitle>{msgState.statusCode != 200 ? "Opps..":"Success"}</AlertTitle>
         {msgState.msg}
       </Alert>
     </Snackbar>

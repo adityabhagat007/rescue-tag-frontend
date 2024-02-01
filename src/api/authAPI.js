@@ -5,7 +5,7 @@ export const userSignUp = async(data) =>{
     try{
         const response = await PUBLIC_API_REQ.post(PUBLIC_APIS.signup,data);
         console.log(response)
-        return {error:null ,data:response.data ,status:response.status}
+        return {data:response.data ,status:response.status}
     }catch(err){
         return apiErrorHandler(err);
     }
