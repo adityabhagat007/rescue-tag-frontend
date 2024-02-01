@@ -16,24 +16,29 @@ import Copyright from "../components/Copyright";
 import TEXT_CONSTANTS from "../constants/textConstants";
 import { useDispatch } from "react-redux";
 import { setMessage } from "../redux/reducers/msgSlice";
+import DialogWrapper from "../components/Modal/DialogWrapper";
+import OtpModalBody from "../components/Modal/OtpModalBody";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignUpPage() {
   console.log("Singup page...................");
   const dispatch = useDispatch();
+  const [modalOpen ,setModalOpen] = useState(false)
   const handleSignup = async (data) => {
-    let type;
     const res = await userSignUp(data);
     console.log(res)
     if (res.status == 200) {
-      type = "success";
+      dispatch(
+        setMessage({ type: "success", msg: res.data.message, statusCode: res.status })
+      );
+      setModalOpen(true);
     } else {
-      type = "error";
+      dispatch(
+        setMessage({ type: "error", msg: res.data.message, statusCode: res.status })
+      );
     }
-    dispatch(
-      setMessage({ type: type, msg: res.data.message, statusCode: res.status })
-    );
+   
   };
   const formik = useFormik({
     validationSchema: userSchema,
@@ -49,6 +54,13 @@ export default function SignUpPage() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <DialogWrapper
+        title={"OTP Verification"}
+        width={"lg"}
+        open={modalOpen}
+        setOpen={setModalOpen}
+        body={<OtpModalBody/>}
+      />
       <Box
         sx={{
           marginTop: 5,
