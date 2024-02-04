@@ -1,14 +1,16 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { privateRoute, publicRoutes } from "./routes/routes";
-import { Backdrop } from "@mui/material";
+import FallbackUI from "./components/Loader/FallbackUI";
+
+
 
 function App() {
   return (
-    <Suspense fallback={<></>}>
+    <Suspense fallback={<FallbackUI/>}>
     <Routes>
       {publicRoutes.map((route) => (
-        <Route element={route.element}>
+        <Route element={route.element} key={route.path}>
           {route.children.map((childrenRoute) => (
             <Route
               path={childrenRoute.path}
@@ -19,7 +21,7 @@ function App() {
         </Route>
       ))}
       {privateRoute.map((route) => (
-        <Route element={route.element}>
+        <Route element={route.element} key={route.path}>
           {route.children.map((childrenRoute) => (
             <Route
               path={childrenRoute.path}
