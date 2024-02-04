@@ -54,9 +54,7 @@ const Navbar = () => {
             <>
             <Logo/>
               <Tabs
-                textColor="#ffffff"
-                value={value}
-                onChange={() => setValue(value)}
+                textColor="inherit"     
                 TabIndicatorProps={{ style: { background: "#ff0000" } }}
               >
                 <Tab

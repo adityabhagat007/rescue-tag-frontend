@@ -16,8 +16,8 @@ import Copyright from "../components/Copyright";
 import TEXT_CONSTANTS from "../constants/textConstants";
 import { useDispatch } from "react-redux";
 import { setMessage } from "../redux/reducers/msgSlice";
-import DialogWrapper from "../components/Modal/DialogWrapper";
-import OtpModalBody from "../components/Modal/OtpModalBody";
+import OtpModal from "../components/Modal/OtpModal";
+import { setUserData } from "../redux/reducers/userSlice";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -28,10 +28,11 @@ export default function SignUpPage() {
   const handleSignup = async (data) => {
     const res = await userSignUp(data);
     console.log(res)
-    if (res.status == 200) {
+    if (res.status === 200) {
       dispatch(
         setMessage({ type: "success", msg: res.data.message, statusCode: res.status })
       );
+      dispatch(setUserData({email:data.email}))
       setModalOpen(true);
     } else {
       dispatch(
@@ -54,12 +55,11 @@ export default function SignUpPage() {
 
   return (
     <Container component="main" maxWidth="xs">
-      <DialogWrapper
+      <OtpModal
         title={"OTP Verification"}
         width={"lg"}
         open={modalOpen}
         setOpen={setModalOpen}
-        body={<OtpModalBody/>}
       />
       <Box
         sx={{

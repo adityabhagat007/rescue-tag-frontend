@@ -10,3 +10,12 @@ export const userSignUp = async(data) =>{
         return apiErrorHandler(err);
     }
 }
+export const verifySignupOtp = async(data)=>{
+    try{
+        const response = await PUBLIC_API_REQ.post(PUBLIC_APIS.verifyOtp,data);
+        console.log(response)
+        return {data:response.data ,status:response.status}
+    }catch(err){
+        return apiErrorHandler(err);
+    }
+}

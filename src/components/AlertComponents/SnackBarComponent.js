@@ -43,11 +43,11 @@ export default function SnackBarComponent() {
     >
       <Alert
         onClose={handleClose}
-        severity={msgState.type}
+        severity={msgState.type || "success"}
         sx={{ width: "100%" }}
         variant="filled"
       >
-        <AlertTitle>{msgState.statusCode != 200 ? "Opps..":"Success"}</AlertTitle>
+        {/* <AlertTitle>{msgState.statusCode != 200 ? "Opps..":"Success"}</AlertTitle> */}
         {msgState.msg}
       </Alert>
     </Snackbar>
