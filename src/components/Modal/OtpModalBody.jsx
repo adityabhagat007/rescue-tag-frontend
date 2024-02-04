@@ -8,11 +8,20 @@ export default function OtpModalBody() {
   return (
     <OTPInput
        value={otp}
-       inputType="number"
+       inputType="tel"
        onChange={setOtp}
        numInputs={6}
-       renderSeparator={<span>-</span>}
+       renderSeparator={<span>&nbsp;</span>}
        renderInput={(props) => <input {...props} />}
+       skipDefaultStyles={false}
+       shouldAutoFocus={true}
+       containerStyle={"none"}
+       inputStyle={{
+        width:"50px",
+        height:"50px",
+        fontSize: "1.5rem",
+        overflow:"hidden"
+       }}
     />
   )
 }

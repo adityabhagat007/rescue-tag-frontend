@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import React from "react";
 
 export default function DialogWrapper({ open, setOpen, width, title, body }) {
@@ -6,14 +6,17 @@ export default function DialogWrapper({ open, setOpen, width, title, body }) {
     setOpen((prev) => !prev);
   };
   return (
-    <Dialog open={open} maxWidth={"lg"} onClose={handleClose}>
+    <Dialog open={open} maxWidth={"lg"} >
     <DialogTitle>{title}</DialogTitle>
       <DialogContent>
-      <DialogContentText>
+      <DialogContentText style={{marginBottom:"10px"}}>
             Please verify to processed further
       </DialogContentText>
         {body}
       </DialogContent>
+      <DialogActions>
+          <Button type="submit" onClick={handleClose}>Submit</Button>
+      </DialogActions>
     </Dialog>
   );
 }

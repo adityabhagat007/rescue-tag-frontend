@@ -1,13 +1,12 @@
 import React from "react";
 import AppLayout from "../layout/appLayout";
-import HomeLayout from "../layout/homeLayout";
-import AboutUsPage from "../pages/aboutUsPage";
-import HomePage from "../pages/homePage";
+;
 
-import SignUpPage from "../pages/signUpPage";
-
-const LoginPage = React.lazy(()=> import("../pages/loginPage"))
-
+const HomeLayout = React.lazy(()=>import("../layout/homeLayout"));
+const LoginPage = React.lazy(()=> import("../pages/loginPage"));
+const SignUpPage = React.lazy(()=>import("../pages/signUpPage"));
+const HomePage = React.lazy(()=>import("../pages/homePage"));
+const AboutUsPage =React.lazy(()=>import("../pages/aboutUsPage"));
 export const publicRoutes = [
   {
     path:"/",
