@@ -8,6 +8,12 @@ const SignUpPage = React.lazy(()=>import("../pages/signUpPage"));
 const HomePage = React.lazy(()=>import("../pages/homePage"));
 const AboutUsPage =React.lazy(()=>import("../pages/aboutUsPage"));
 
+export const  ROUTE_PATH = {
+  DEFAULT: "/",
+  ABOUT:"/about",
+  LOGIN:"/login",
+  SIGNUP:"/signup"
+}
 
 
 
