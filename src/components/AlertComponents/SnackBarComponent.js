@@ -39,12 +39,12 @@ export default function SnackBarComponent() {
       action={action}
       autoHideDuration={6000}
       onClose={handleClose}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
     >
       <Alert
         onClose={handleClose}
         severity={msgState.type || "success"}
-        sx={{ width: "100%" }}
+        sx={{ width: "100%" ,textTransform:"capitalize" }}
         variant="filled"
       >
         {/* <AlertTitle>{msgState.statusCode != 200 ? "Opps..":"Success"}</AlertTitle> */}

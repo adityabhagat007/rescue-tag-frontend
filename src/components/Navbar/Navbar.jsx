@@ -53,7 +53,7 @@ const Navbar = () => {
           ) : (
             <>
             <Logo/>
-              <Tabs
+              {/* <Tabs
                 textColor="inherit"     
                 TabIndicatorProps={{ style: { background: "#ff0000" } }}
               >
@@ -69,7 +69,7 @@ const Navbar = () => {
                   sx={{ textDecoration: "none", margin: "0 10px" }}
                   onClick={() => navigationPage("/about")}
                 ></Tab>
-              </Tabs>
+              </Tabs> */}
 
               <Button
                 variant="contained"

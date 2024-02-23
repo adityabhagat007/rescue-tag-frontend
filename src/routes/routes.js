@@ -12,7 +12,8 @@ export const  ROUTE_PATH = {
   DEFAULT: "/",
   ABOUT:"/about",
   LOGIN:"/login",
-  SIGNUP:"/signup"
+  SIGNUP:"/signup",
+  DASHBOARD:"/dashboard"
 }
 
 

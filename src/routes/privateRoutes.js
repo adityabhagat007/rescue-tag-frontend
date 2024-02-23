@@ -6,10 +6,10 @@ import { getLocalStorageItem } from "../services/localStorageService"
 
 
 
-const usePrivateRoute = ()=>{
+const UsePrivateRoute = ()=>{
     const authToken = getLocalStorageItem(LOCAL_STORAGE_CONSTANTS.authToken);
     return (authToken ? <Outlet/> :<Navigate to="/login"/>)
 }
 
 
-export default usePrivateRoute;
+export default UsePrivateRoute;
