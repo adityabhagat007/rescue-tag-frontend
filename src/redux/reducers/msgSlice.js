@@ -20,9 +20,6 @@ const msgSlice = createSlice({
         },
         cleanMessage:(state,action)=>{
             state.show = false;
-            state.type = "";
-            state.msg = "";
-            state.statusCode = null;
         }
     }
 })
