@@ -7,6 +7,8 @@ export default function BreadCrumb() {
   const currentLocation = useLocation();
 
   let breadcrumb = currentLocation.pathname.split("/");
+  let length = breadcrumb.length-1;
+  let path = ""
   breadcrumb.shift();
   console.log(currentLocation, breadcrumb);
 
@@ -21,10 +23,12 @@ export default function BreadCrumb() {
     >
       {breadcrumb.length > 1 ? (
         <Breadcrumbs separator="/" aria-label="breadcrumb">
-          {breadcrumb.map((ele) => (
-            <Link
+          {breadcrumb.map((ele ,index) => {
+            path=path+"/"+ele;
+            return(<Link
               underline="hover"
-              to={`/${ele}`}
+              to={path}
+              key={path}
               style={{
                 textDecoration: "none",
                 color: "#000000",
@@ -32,8 +36,8 @@ export default function BreadCrumb() {
               }}
             >
               {ele}
-            </Link>
-          ))}
+            </Link>)
+          })}
         </Breadcrumbs>
       ) : (
         <Typography variant="h6">{breadcrumb[0]}</Typography>
