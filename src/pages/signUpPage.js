@@ -57,6 +57,7 @@ export default function SignUpPage() {
     <Container component="main" maxWidth="xs">
       <OtpModal
         title={"OTP Verification"}
+        subTitle={"A OTP has been sent to your email please verify to proceed further"}
         width={"lg"}
         open={modalOpen}
         setOpen={setModalOpen}
