@@ -57,6 +57,10 @@ export const privateRoute = [
       {
         path:"/dashboard/home",
         element:<HomePage/>
+      },
+      {
+        path:"/dashboard/details",
+        element:<HomePage/>
       }
     ]
   }
