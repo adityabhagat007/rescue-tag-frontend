@@ -1,4 +1,5 @@
 import {
+  Box,
   Divider,
   IconButton,
   List,
@@ -19,10 +20,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { NavLink } from "react-router-dom";
-import Drawer from '@mui/material/Drawer';
-import AppBar from '@mui/material/AppBar';
+import Drawer from "@mui/material/Drawer";
+import AppBar from "@mui/material/AppBar";
 import Logo from "../Navbar/components/logoComponent";
-const drawerWidth = 240;
+import { DRAWER_WIDTH } from "../../constants/constant";
+import { ROUTE_PATH } from "../../routes/routes";
+const drawerWidth = DRAWER_WIDTH;
 
 export default function DrawerComponent(props) {
   const menuOptions = [
@@ -30,13 +33,13 @@ export default function DrawerComponent(props) {
       id: 1,
       name: "Dashboard",
       icon: <AccountCircleOutlinedIcon fontSize="medium" />,
-      link: "",
+      link: ROUTE_PATH.DASHBOARD,
     },
     {
       id: 2,
       name: "Details",
       icon: <AddBoxRoundedIcon />,
-      link: "",
+      link: ROUTE_PATH.DETAILS,
     },
   ];
   const { window } = props;
@@ -64,12 +67,26 @@ export default function DrawerComponent(props) {
       <Divider />
       <List>
         {menuOptions.map((text, index) => (
-          <ListItem key={text.id} disablePadding style={{paddingLeft:"20px",paddingRight:"10px"}}>
-            <ListItemButton> 
-              <ListItemIcon style={{minWidth:"32px"}}>{text.icon}</ListItemIcon>
-              <ListItemText primary={text.name} />
-            </ListItemButton>
-          </ListItem>
+          <NavLink
+            style={{
+              textDecoration: "none",
+              color: "#000000",
+            }}
+            to={text.link}
+          >
+            <ListItem
+              key={text.id}
+              disablePadding
+              style={{ paddingLeft: "20px", paddingRight: "10px" }}
+            >
+              <ListItemButton>
+                <ListItemIcon style={{ minWidth: "32px" }}>
+                  {text.icon}
+                </ListItemIcon>
+                <ListItemText primary={text.name} />
+              </ListItemButton>
+            </ListItem>
+          </NavLink>
         ))}
       </List>
       <Divider />
@@ -92,11 +109,14 @@ export default function DrawerComponent(props) {
       <AppBar
         position="fixed"
         elevation={0}
-        style={{
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
           backgroundColor: "#ffffff",
           color: "#000000",
           border: "1px solid #E0E0E0",
         }}
+        style={{}}
       >
         <Toolbar>
           <IconButton
@@ -108,40 +128,54 @@ export default function DrawerComponent(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div"sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Responsive drawer
           </Typography>
-          <div ><Logo/></div>
-          
+          <div>
+            <Logo />
+          </div>
         </Toolbar>
       </AppBar>
-      <Drawer
-        container={container}
-        variant="temporary"
-        open={mobileOpen}
-        onTransitionEnd={handleDrawerTransitionEnd}
-        onClose={handleDrawerClose}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        sx={{
-          display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth ,backgroundColor:"" },
-          
-        }}
+      <Box
+         component="nav"
+         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+         aria-label="mailbox folders"
       >
-        {drawer}
-      </Drawer>
-      <Drawer
-        variant="permanent"
-        sx={{
-          display: { xs: "none", sm: "block" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth , backgroundColor:"",},
-        }}
-        open
-      >
-        {drawer}
-      </Drawer>
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onTransitionEnd={handleDrawerTransitionEnd}
+          onClose={handleDrawerClose}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              backgroundColor: "",
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              backgroundColor: "",
+            },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
     </>
   );
 }
