@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Divider, Stack } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import DrawerComponent from "../components/Drawer/Drawer";
@@ -26,8 +26,9 @@ export default function AppLayout() {
           //sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
         >
           <Stack>
-            <div className="breadcrumb" style={{color:"#000000"}}>
+            <div className="breadcrumb" style={{color:"#000000",marginBottom:"10px"}}>
               <BreadCrumb/>
+              <Divider/>
             </div>
             <div className="dashboard-body">
               <Outlet />
