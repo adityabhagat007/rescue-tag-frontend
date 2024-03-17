@@ -1,4 +1,3 @@
-
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
@@ -19,30 +18,47 @@ import { LOCAL_STORAGE_CONSTANTS } from "../constants/constant";
 import { useEffect } from "react";
 
 export default function SignIn() {
- const dispatch = useDispatch();
- const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-
-
-
-
- const {mutate ,isError,isPending} = useMutation({
-    mutationKey:["userLogin"],
-    mutationFn:userLogin,
-    onSuccess :(response,variables)=>{
-      if(response.status === 200){
-        dispatch( setMessage({ type: "success", msg: response.data.message, statusCode: response.status }));
-        setLocalStorageItem(LOCAL_STORAGE_CONSTANTS.authToken, response.data.data.token);
+  const { mutate, isError, isPending } = useMutation({
+    mutationKey: ["userLogin"],
+    mutationFn: userLogin,
+    onSuccess: (response, variables) => {
+      if (response.status === 200) {
+        dispatch(
+          setMessage({
+            type: "success",
+            msg: response.data.message,
+            statusCode: response.status,
+          })
+        );
+        setLocalStorageItem(
+          LOCAL_STORAGE_CONSTANTS.authToken,
+          response.data.data.token
+        );
         navigate(ROUTE_PATH.DASHBOARD);
-      }else{
-        dispatch( setMessage({ type: "error", msg: response.data.message, statusCode: response.status }));
+      } else {
+        dispatch(
+          setMessage({
+            type: "error",
+            msg: response.data.message,
+            statusCode: response.status,
+          })
+        );
       }
     },
-    onError:(data)=>{
+    onError: (data) => {
       console.log(data);
-      dispatch( setMessage({ type: "error", msg: data.data.message, statusCode: data.status }));
-    }
-  })
+      dispatch(
+        setMessage({
+          type: "error",
+          msg: data.data.message,
+          statusCode: data.status,
+        })
+      );
+    },
+  });
   const formik = useFormik({
     validationSchema: loginSchema,
     initialValues: {
@@ -51,7 +67,7 @@ export default function SignIn() {
     },
     onSubmit: (values, action) => {
       console.log(values);
-      mutate(values)
+      mutate(values);
     },
   });
   return (
