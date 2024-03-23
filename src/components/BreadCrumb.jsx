@@ -40,8 +40,9 @@ export default function BreadCrumb() {
           })}
         </Breadcrumbs>
       ) : (
-        <Typography variant="h6">{breadcrumb[0]}</Typography>
+        <Typography fontSize={"1.2rem"} fontWeight="bold" color={"#000000"} style={{opacity:"54%"}}>{breadcrumb[0]}</Typography>
       )}
+      <div></div>
     </div>
   );
 }

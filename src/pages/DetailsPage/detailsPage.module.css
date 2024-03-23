@@ -1,0 +1,21 @@
+.input_title{
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.main_container{
+   border: 1px solid #ccc;
+   background-color: #fff;
+   border-radius: 4px;
+   height: 70vh;
+   padding: 1rem;
+}
+
+.userName_section{
+   padding: 10px;
+   border-radius: 0px;
+   margin-bottom: 10px;
+}
+.input_field{
+    margin-bottom: 20px;
+}

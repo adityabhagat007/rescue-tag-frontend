@@ -17,7 +17,7 @@ export default function AppLayout() {
           sx={{
             flexGrow: 1,
             p: 4,
-            marginTop: "50px",
+            marginTop: "40px",
             //marginLeft:"230px",
             height: "80vh",
             backgroundColor: "#FAFAFB",
@@ -26,9 +26,8 @@ export default function AppLayout() {
           //sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
         >
           <Stack>
-            <div className="breadcrumb" style={{color:"#000000",marginBottom:"10px"}}>
+            <div className="breadcrumb" style={{color:"#000000",marginBottom:"15px"}}>
               <BreadCrumb/>
-              <Divider/>
             </div>
             <div className="dashboard-body">
               <Outlet />
