@@ -40,7 +40,7 @@ export default function DetailsPage() {
             </Grid>
             <Grid item xs>
               <div className={style.input_field}>
-                <div className={style.input_title}>Address</div>
+                <div className={style.input_title}>Email</div>
                 <InputText
                   placeHolder={"If you have another name"}
                   height={"40px"}
@@ -49,8 +49,8 @@ export default function DetailsPage() {
               </div>
             </Grid>
             <Grid item xs>
-              <div className={style.input_field}>
-                <div className={style.input_title}>Address</div>
+            <div className={style.input_field}>
+                <div className={style.input_title}>User name</div>
                 <InputText
                   placeHolder={"If you have another name"}
                   height={"40px"}
@@ -62,7 +62,7 @@ export default function DetailsPage() {
         </CardContent>
       </Card>
       <Card className={style.userName_section}>
-          Basic Details
+          Contact Details
         <Divider />
         <CardContent>
           <Grid container>
@@ -108,7 +108,7 @@ export default function DetailsPage() {
         </CardContent>
       </Card>
       <Card className={style.userName_section}>
-          Basic Details
+          Emergency Details
         <Divider />
         <CardContent>
           <Grid container>
