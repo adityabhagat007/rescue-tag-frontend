@@ -1,6 +1,6 @@
 import React from "react";
 import AppLayout from "../layout/appLayout";
-import DetailsPage from "../pages/detailsPage";
+import DetailsPage from "../pages/DetailsPage/detailsPage";
 
 const HomeLayout = React.lazy(() => import("../layout/homeLayout"));
 const LoginPage = React.lazy(() => import("../pages/loginPage"));

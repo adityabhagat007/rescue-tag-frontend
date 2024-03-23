@@ -89,17 +89,6 @@ export default function DrawerComponent(props) {
           </NavLink>
         ))}
       </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon></ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </div>
   );
   const container =
@@ -110,11 +99,11 @@ export default function DrawerComponent(props) {
         position="fixed"
         elevation={0}
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100% - ${drawerWidth}px)`},
           ml: { sm: `${drawerWidth}px` },
           backgroundColor: "#ffffff",
           color: "#000000",
-          border: "1px solid #E0E0E0",
+          
         }}
         style={{}}
       >
@@ -138,7 +127,7 @@ export default function DrawerComponent(props) {
       </AppBar>
       <Box
          component="nav"
-         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 },}}
          aria-label="mailbox folders"
       >
         <Drawer
@@ -157,6 +146,7 @@ export default function DrawerComponent(props) {
               width: drawerWidth,
               backgroundColor: "",
             },
+            
           }}
         >
           {drawer}
