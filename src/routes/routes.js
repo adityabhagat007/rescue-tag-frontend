@@ -8,7 +8,10 @@ const LoginPage = React.lazy(() => import("../pages/loginPage"));
 const SignUpPage = React.lazy(() => import("../pages/signUpPage"));
 const HomePage = React.lazy(() => import("../pages/homePage"));
 const AboutUsPage = React.lazy(() => import("../pages/aboutUsPage"));
-const ProfilePage = React.lazy(() => import("../pages/PublicProfilePage/publicProfilepage"));
+const ProfilePage = React.lazy(() =>
+  import("../pages/PublicProfilePage/publicProfilepage")
+);
+const TagPage = React.lazy(() => import("../pages/TagPage/tagPage"));
 
 export const ROUTE_PATH = {
   DEFAULT: "/",
@@ -16,10 +19,10 @@ export const ROUTE_PATH = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   DASHBOARD: "/dashboard",
-  DETAILS: "/details",
-  PROFILE:"/profile/:userId"
+  DETAILS: "/dashboard/details",
+  PROFILE: "/dashboard/profile",
+  TAG:"/dashboard/tag"
 };
-
 
 export const publicRoutes = [
   {
@@ -46,7 +49,6 @@ export const publicRoutes = [
   },
 ];
 
-
 export const privateRoute = [
   {
     path: "",
@@ -62,11 +64,15 @@ export const privateRoute = [
       },
       {
         path: ROUTE_PATH.DETAILS,
-        element: <DetailsPage/>,
+        element: <DetailsPage />,
       },
       {
-        path: ROUTE_PATH.PROFILE,
-        element: <ProfilePage/>,
+        path: `${ROUTE_PATH.PROFILE}/:userId`,
+        element: <ProfilePage />,
+      },
+      {
+        path: ROUTE_PATH.TAG,
+        element: <TagPage />,
       },
     ],
   },

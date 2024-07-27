@@ -47,6 +47,12 @@ export default function DrawerComponent(props) {
       icon: <AddBoxRoundedIcon />,
       link: ROUTE_PATH.PROFILE,
     },
+    {
+      id: 4,
+      name: "Tags",
+      icon: <AddBoxRoundedIcon />,
+      link: ROUTE_PATH.TAG,
+    },
   ];
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -69,7 +75,9 @@ export default function DrawerComponent(props) {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Toolbar>
+         <Logo/>
+        </Toolbar>
       <Divider />
       <List>
         {menuOptions.map((text, index) => (
@@ -125,10 +133,10 @@ export default function DrawerComponent(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Responsive drawer
+            
           </Typography>
           <div>
-            <Logo />
+           
           </div>
         </Toolbar>
       </AppBar>
