@@ -1,0 +1,16 @@
+.nav_link{
+   text-decoration: none;
+   color: #ffffff;
+}
+.nav_link:hover {
+   background-color: #333a48; /* Dark blue background color */
+   display: block;
+   border: 1px solid #333a48; /* Darker blue border */
+   border-radius: 4px; 
+ }
+.nav_link.active {
+   background-color: #333a48; /* Dark blue background color */
+   display: block;
+   border: 1px solid #333a48; /* Darker blue border */
+   border-radius: 4px; 
+ }

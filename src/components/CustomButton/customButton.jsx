@@ -1,8 +1,7 @@
 import React from "react";
 
 import { Button } from "@mui/material";
-import withStyles from "@mui/material";
-import style from "./customButton.module.css";
+ 
 // Custom styles for the button
 const styles = (theme) => ({
   root: {
@@ -15,7 +14,7 @@ const styles = (theme) => ({
 });
 
 // Custom Button component
-const CustomButton = ({ classes, color, backgroundColor, style ,children, ...props}) => (
+const CustomButton = ({ className, color, backgroundColor, style ,children, ...props}) => (
   <Button
     className={style.button}
     {...props}

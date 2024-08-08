@@ -10,21 +10,17 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import MuiDrawer from "@mui/material/Drawer";
 import React, { useState } from "react";
-import MuiAppBar from "@mui/material/AppBar";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { styled } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { NavLink } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import AppBar from "@mui/material/AppBar";
-import Logo from "../Navbar/components/logoComponent";
 import { DRAWER_WIDTH } from "../../constants/constant";
 import { ROUTE_PATH } from "../../routes/routes";
+import "./drawer.css";
+
 const drawerWidth = DRAWER_WIDTH;
 
 export default function DrawerComponent(props) {
@@ -73,54 +69,52 @@ export default function DrawerComponent(props) {
     }
   };
 
-  const drawer = (
-    <div>
-      <Toolbar>
-         <Logo/>
-        </Toolbar>
-      <Divider />
-      <List>
-        {menuOptions.map((text, index) => (
-          <NavLink
-            style={{
-              textDecoration: "none",
-              color: "#000000",
-            }}
-            to={text.link}
-            key={text.id}
-          >
-            <ListItem
-              key={text.id}
-              disablePadding
-              style={{ paddingLeft: "20px", paddingRight: "10px" }}
-            >
-              <ListItemButton>
-                <ListItemIcon style={{ minWidth: "32px" }}>
-                  {text.icon}
-                </ListItemIcon>
-                <ListItemText primary={text.name} />
-              </ListItemButton>
-            </ListItem>
-          </NavLink>
-        ))}
-      </List>
-    </div>
-  );
+  const drawer = () => {
+    return (
+      <div>
+        <Toolbar>{/* <Logo/> */}</Toolbar>
+        <Divider />
+        <List>
+          {menuOptions.map((text, index) => (
+            <NavLink className="nav_link" to={text.link} key={text.id} activeClassName="active">
+              <ListItem
+                key={text.id}
+                disablePadding
+                style={{ paddingLeft: "20px", paddingRight: "10px" }}
+              >
+                <ListItemButton>
+                  <ListItemIcon
+                    style={{
+                      minWidth: "32px",
+                      color: "#ffffff",
+                      fill: "#dee4ee",
+                    }}
+                  >
+                    {text.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={text.name} />
+                </ListItemButton>
+              </ListItem>
+            </NavLink>
+          ))}
+        </List>
+      </div>
+    );
+  };
+
   const container =
     window !== undefined ? () => window().document.body : undefined;
   return (
     <>
       <AppBar
         position="fixed"
-        elevation={0}
+        elevation={2}
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)`},
+          width: { sm: `calc(100% - ${drawerWidth}px)`  },
           ml: { sm: `${drawerWidth}px` },
           backgroundColor: "#ffffff",
           color: "#000000",
-          
         }}
-        style={{}}
       >
         <Toolbar>
           <IconButton
@@ -132,18 +126,18 @@ export default function DrawerComponent(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            
-          </Typography>
-          <div>
-           
-          </div>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1 }}
+          ></Typography>
         </Toolbar>
       </AppBar>
       <Box
-         component="nav"
-         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 },}}
-         aria-label="mailbox folders"
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="mailbox folders"
       >
         <Drawer
           container={container}
@@ -159,12 +153,13 @@ export default function DrawerComponent(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "",
+              backgroundColor: "#1c2434",
+              color: "#ffffff",
+              fill: "#dee4ee",
             },
-            
           }}
         >
-          {drawer}
+          {drawer()}
         </Drawer>
         <Drawer
           variant="permanent"
@@ -173,12 +168,15 @@ export default function DrawerComponent(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "",
+              backgroundColor: "#1c2434",
+              color: "#ffffff",
+              fill: "#dee4ee",
+              padding:"5px"
             },
           }}
           open
         >
-          {drawer}
+          {drawer()}
         </Drawer>
       </Box>
     </>

@@ -18,8 +18,8 @@ export const ROUTE_PATH = {
   ABOUT: "/about",
   LOGIN: "/login",
   SIGNUP: "/signup",
-  DASHBOARD: "/dashboard",
-  DETAILS: "/dashboard/details",
+  DASHBOARD: "/dashboard/main",
+  DETAILS: "dashboard/details",
   PROFILE: "/dashboard/profile",
   TAG:"/dashboard/tag"
 };
@@ -56,10 +56,6 @@ export const privateRoute = [
     children: [
       {
         path: ROUTE_PATH.DASHBOARD,
-        element: <HomePage />,
-      },
-      {
-        path: "/dashboard/home",
         element: <HomePage />,
       },
       {
