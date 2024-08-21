@@ -14,10 +14,11 @@ export default function InputText({
   disabled,
   name,
   value,
-  error
+  error,...props
 }) {
   return (
     <TextField
+
       name={name}
       value={value}
       key={key}
@@ -32,10 +33,11 @@ export default function InputText({
           ...style,
         },
       }}
-      
+      {...props}
       disabled={disabled}
       multiline={multiline}
-      rows={maxRows}
+     
+      maxRows={maxRows}
       error={error}
       helperText={error ? error : hyperText}
     />

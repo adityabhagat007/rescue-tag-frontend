@@ -22,7 +22,7 @@ const DetailsFormJson = {
       title: "Basic Details",
       fields: [
         {
-          label: "Name",
+          labeled: "Name",
           name: "name",
           type: "text",
           placeholder: "Please Enter your Name",
@@ -31,7 +31,6 @@ const DetailsFormJson = {
           maxlength: 20,
           required: true,
           disabled: false,
-
           style: {
             width: "250px",
             height: "27px",
@@ -40,7 +39,7 @@ const DetailsFormJson = {
           },
         },
         {
-          label: "Local Name",
+          labeled: "Local Name",
           type: "text",
           name: "nickName",
           placeholder: "Please Enter your Local Name",
@@ -56,7 +55,7 @@ const DetailsFormJson = {
           },
         },
         {
-          label: "Email",
+          labeled: "Email",
           name: "email",
           type: "text",
           placeholder: "Please Enter your Email",
@@ -70,7 +69,7 @@ const DetailsFormJson = {
           },
         },
         {
-          label: "User Name",
+          labeled: "User Name",
           name: "userName",
           type: "text",
           placeholder: "Please Enter your User Name",
@@ -91,7 +90,7 @@ const DetailsFormJson = {
       title: "Contact Details",
       fields: [
         {
-          label: "Primary Number",
+          labeled: "Primary Number",
           type: "text",
           name: "number",
           placeholder: "Please Enter your Primary Number",
@@ -105,7 +104,7 @@ const DetailsFormJson = {
           },
         },
         {
-          label: "State",
+          labeled: "State",
           type: "text",
           name: "state",
           placeholder: "Please Enter your State",
@@ -121,7 +120,7 @@ const DetailsFormJson = {
           },
         },
         {
-          label: "Country",
+          labeled: "Country",
           type: "text",
           name: "country",
           placeholder: "Please Enter your Country",
@@ -137,7 +136,7 @@ const DetailsFormJson = {
           },
         },
         {
-          label: "City",
+          labeled: "City",
           type: "text",
           name: "city",
           placeholder: "Please Enter your City",
@@ -153,7 +152,7 @@ const DetailsFormJson = {
           },
         },
         {
-          label: "Pin Code",
+          labeled: "Pin Code",
           name: "zipCode",
           type: "text",
           placeholder: "Please Enter your Pin Code",
@@ -167,7 +166,7 @@ const DetailsFormJson = {
           },
         },
         {
-          label: "Address",
+          labeled: "Address",
           name: "address",
           type: "text",
           multiline: true,
@@ -310,8 +309,7 @@ export default function DetailsPage() {
                 {section.fields.map((field, index) => (
                   <Grid item xs key={index}>
                     <div className={style.input_field}>
-                      <div className={style.input_title}>{field.label}</div>
-                      {console.log(formDatas[field.name],"jhjkhj")}
+                      <div className={style.input_title}>{field.labeled}</div>
                       <FormComponent
                         fieldType={field.type}
                         {...field}
