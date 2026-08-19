@@ -1,6 +1,14 @@
 FROM node:22-alpine
 WORKDIR /app
+
 COPY package*.json ./
-RUN npm install
+RUN npm ci
+
 COPY . .
-CMD ["npm","run","dev"] f
+
+# GitHub Actions: docker build --build-arg APP_ENV=dev|prod
+ARG APP_ENV=prod
+RUN npm run build:${APP_ENV}
+
+EXPOSE 3000
+CMD ["npm", "run", "serve"]
